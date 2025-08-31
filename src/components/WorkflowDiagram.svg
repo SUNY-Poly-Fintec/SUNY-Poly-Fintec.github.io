@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1000 680" width="100%" role="img"
+     aria-label="Broker feeds ETL server running IB Gateway, which fans out to In-House GPU server, OpenAI, and Anthropic. Buy/sell decisions return from AI assets to ETL and back to Broker. ETL also powers dashboards."
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- ====== Defs (arrowheads & subtle shadow) ====== -->
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#10b981"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <style>
+    .panel { fill: #0f172a; stroke: #334155; }
+    .title { fill: #e5e7eb; font: 700 18px/1.2 Inter, system-ui, sans-serif; }
+    .muted { fill: #94a3b8; font: 12px Inter, system-ui, sans-serif; }
+    .label { fill: #94a3b8; font: 12px Inter, system-ui, sans-serif; }
+  </style>
+
+  <!-- ====== Boxes ====== -->
+  <!-- Broker (top) -->
+  <g filter="url(#shadow)">
+    <rect x="380" y="30" rx="12" ry="12" width="240" height="90" class="panel"/>
+    <text x="500" y="72" text-anchor="middle" class="title">Broker / Exchange</text>
+    <text x="500" y="94" text-anchor="middle" class="muted">Market Data • Orders</text>
+  </g>
+
+  <!-- ETL (middle) -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="170" rx="12" ry="12" width="300" height="130" class="panel"/>
+    <text x="500" y="210" text-anchor="middle" class="title">ETL Server</text>
+    <text x="500" y="232" text-anchor="middle" class="muted">Cleaning • Feature Eng. • Routing</text>
+    <text x="500" y="254" text-anchor="middle" class="muted">Runs IB Gateway</text>
+  </g>
+
+  <!-- Dashboards (left of ETL) -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="190" rx="12" ry="12" width="240" height="100" class="panel"/>
+    <text x="190" y="225" text-anchor="middle" class="title">Dashboards</text>
+    <text x="190" y="245" text-anchor="middle" class="muted">Grafana • Streamlit • Logs</text>
+  </g>
+
+  <!-- AI assets (bottom row) -->
+  <g filter="url(#shadow)">
+    <rect x="90"  y="440" rx="12" ry="12" width="260" height="120" class="panel"/>
+    <text x="220" y="480" text-anchor="middle" class="title">In-House GPU Server</text>
+    <text x="220" y="502" text-anchor="middle" class="muted">CUDA • RL • Backtesting</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="370" y="440" rx="12" ry="12" width="260" height="120" class="panel"/>
+    <text x="500" y="480" text-anchor="middle" class="title">OpenAI</text>
+    <text x="500" y="502" text-anchor="middle" class="muted">LLMs • Embeddings • Tools</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="650" y="440" rx="12" ry="12" width="260" height="120" class="panel"/>
+    <text x="780" y="480" text-anchor="middle" class="title">Anthropic</text>
+    <text x="780" y="502" text-anchor="middle" class="muted">LLMs • Reasoning • Tools</text>
+  </g>
+
+  <!-- ====== Flows ====== -->
+  <!-- Broker -> ETL -->
+  <line x1="500" y1="120" x2="500" y2="170" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="510" y="150" class="label">Market data</text>
+
+  <!-- ETL -> Dashboards -->
+  <line x1="350" y1="235" x2="310" y2="240" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="330" y="228" class="label" text-anchor="end">Metrics / Views</text>
+
+  <!-- ETL -> AI assets -->
+  <line x1="420" y1="300" x2="220" y2="440" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="310" y="418" class="label">Features</text>
+
+  <line x1="500" y1="300" x2="500" y2="440" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="510" y="418" class="label">Prompts / Data</text>
+
+  <line x1="580" y1="300" x2="780" y2="440" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="690" y="418" class="label">Contexts</text>
+
+  <!-- AI assets -> ETL -->
+  <line x1="220" y1="440" x2="420" y2="300" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="310" y="350" class="label" fill="#34d399">Signals / Decisions</text>
+
+  <line x1="500" y1="440" x2="500" y2="300" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="510" y="350" class="label" fill="#34d399">Buy / Sell</text>
+
+  <line x1="780" y1="440" x2="580" y2="300" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="690" y="350" class="label" fill="#34d399">Recommendations</text>
+
+  <!-- ETL -> Broker (orders) -->
+  <line x1="500" y1="170" x2="500" y2="120" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <text x="510" y="138" class="label" fill="#34d399">Orders</text>
+
+  <!-- Ack back (thin) -->
+  <line x1="515" y1="120" x2="515" y2="170" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="525" y="152" class="label" fill="#94a3b8">Fills / Status</text>
+</svg>
+

@@ -1,0 +1,42 @@
+---
+const { title = 'Fintech Club', description = 'University Fintech Club' } = Astro.props;
+---
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#0b0f19; --panel:#111828; --text:#e5e7eb; --muted:#9ca3af; --accent:#60a5fa; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--text); }
+a { color: var(--accent); text-decoration:none; }
+header { display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:1rem 1.25rem; background:linear-gradient(180deg, #0b0f19 0%, #0b0f19cc 80%, transparent 100%); position:sticky; top:0; backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid #1f2937; }
+nav a { margin-right:1rem; font-weight:600; }
+.container { max-width:1080px; margin:0 auto; padding:1.25rem; }
+.card { background:var(--panel); border:1px solid #1f2937; border-radius:16px; padding:1rem 1.25rem; }
+footer { color:var(--muted); padding:2rem 1.25rem; border-top:1px solid #1f2937; }
+</style>
+</head>
+<body>
+<header>
+<div style="font-weight:800">💸 Fintech Club</div>
+<nav>
+<a href="/">Home</a>
+<a href="/events">Events</a>
+<a href="/officers">Officers</a>
+<a href="/news">News</a>
+<a href="/resources">Resources</a>
+<a href="/workflow">Workflow</a>
+</nav>
+</header>
+<main class="container">
+<slot />
+</main>
+<footer class="container">© {new Date().getFullYear()} University Fintech Club</footer>
+</body>
+</html>
