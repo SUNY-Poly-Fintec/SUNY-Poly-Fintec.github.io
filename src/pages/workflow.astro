@@ -1,15 +1,18 @@
 ---
 import Layout from "../components/Layout.astro";
-import WorkflowDiagram from "../components/WorkflowDiagram.astro";
+import WorkflowDiagram from "../components/WorkflowDiagram.svg";
 ---
 <Layout title="AI Server Workflow">
 <h1>AI Server Workflow</h1>
 <p class="card">Data come from a broker/exchange into a compute node which performs ETL/cleaning and feature engineering. Cleaned data feed a CUDA GPU machine for AI workloads. The compute node also calls the OpenAI API for LLM tasks (summaries, embeddings, tool calls). Results feed storage and dashboards.</p>
 
+<WorkflowDiagram />
+
+<!---
 <figure class="card">
   <img src="/public/WorkflowDiagram.svg" alt="AI server workflow diagram" />
   <figcaption>Broker → ETL → AI assets (with decisions flowing back)</figcaption>
 </figure>
-
+-->
 
 </Layout>
