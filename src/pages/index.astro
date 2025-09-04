@@ -1,10 +1,30 @@
 ---
 import Layout from "../components/Layout.astro";
 ---
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Ensure the body and parent containers have a width */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Optional: Limit the maximum width of the container */
+            margin: 0 auto; /* Center the container */
+            padding: 20px; /* Optional: Add some padding */
+        }
+    </style>
+</head>
 <Layout title="Fintech Club" description="University Fintech Club">
 <div class="card">
 <h1 style="margin:0 0 .5rem 0">Welcome to the Fintech Club</h1>
 <p>We explore quantitative finance, crypto markets, and AI systems—from data engineering to GPU inference.</p>
+</div>
+<div class="container">
+<img src="../../public/room_pic.png" style="width: 50%; height: auto;">
 </div>
 </Layout>
 
